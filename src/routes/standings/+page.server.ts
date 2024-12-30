@@ -12,15 +12,6 @@ enum RoundPoints {
 	'W' = 8
 }
 
-// Extend the Team type to include the teamScore field
-// interface Team {
-//     _id: string;
-//     teamName: string;
-//     email: string;
-//     players: string[];
-//     teamScore: number; // Optional field
-// }
-
 export async function load() {
 	// Need to load all teams here
 	const teams = await getTeams();
@@ -42,23 +33,18 @@ export async function load() {
 		}
 		teamScores.push(teamScore);
 	}
-	console.log(teams);
-	console.log(teamScores);
 	// Sort the teams by score
 	var sortedIndices = new Array(numTeams);
 	for (var i = 0; i < numTeams; ++i) sortedIndices[i] = i;
 	sortedIndices.sort(function (a: number, b: number): number { return teamScores[a] > teamScores[b] ? -1 : teamScores[a] < teamScores[b] ? 1 : 0; });
-	console.log(sortedIndices);
 
 	// Create a sortedTeams array
 	var sortedTeams = [];
 	for (var i = 0; i < numTeams; i++) {
 		sortedTeams.push(teams[sortedIndices[i]]);
 	}
-	console.log(sortedTeams);
 
 	const sortedScores = sortedIndices.map(index => teamScores[index]);
-    console.log(sortedScores);
 
 	// Return the sortedTeams array along with the sorted scores
 	// so that we know how many points each team has
