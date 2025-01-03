@@ -15,17 +15,13 @@ export async function getTeamById(id: string) {
 export async function createTeam(teamData: { teamName: string; email: string; players: string[] }) {
     await connectToDatabase();
 
-    console.log('on server');
-    console.log(teamData);
-    console.log('Type of teamData.email:', typeof teamData.email);
-
     // Create Team document with references to Player documents
     const newTeam = new Team({
         teamName: teamData.teamName,
         email: teamData.email,
-        players: teamData.players // Assuming players is an array of player IDs
+        players: teamData.players, // Assuming players is an array of player IDs
+        score: 0
     });
-    console.log('New team:', newTeam);
 
     return newTeam.save();
 }

@@ -1,16 +1,4 @@
-import { getTeams, getPlayerById } from '$lib/db';
-
-// Define the enum for the rounds and their corresponding points
-enum RoundPoints {
-	'1R' = 1,
-	'2R' = 2,
-	'3R' = 3,
-	'4R' = 4,
-	'QF' = 5,
-	'SF' = 6,
-	'F' = 7,
-	'W' = 8
-}
+import { getTeams } from '$lib/db';
 
 export async function load() {
 	// Need to load all teams here
@@ -21,17 +9,7 @@ export async function load() {
 	var teamScores: number[] = [];
 	for (var i = 0; i < numTeams; i++) {
 		const team = teams[i];
-		const players = team.players;
-		// Loop through the players and get each player
-		var teamScore = 0;
-		for (var j = 0; j < players.length; j++) {
-			const playerData = await getPlayerById(players[j]);
-			// get the round for player
-			const playerRound = playerData.round as keyof typeof RoundPoints;
-			const playerPoints = RoundPoints[playerRound] || 0; // Default to 0 if round is not found
-			teamScore += playerPoints;
-		}
-		teamScores.push(teamScore);
+		teamScores.push(team.score);
 	}
 	// Sort the teams by score
 	var sortedIndices = new Array(numTeams);

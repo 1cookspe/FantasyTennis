@@ -15,6 +15,7 @@
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
 		"@types/node": "^22.10.2",
+		"@types/node-schedule": "^2.1.7",
 		"autoprefixer": "^10.4.20",
 		"postcss": "^8.4.49",
 		"svelte": "^5.0.0",
@@ -25,6 +26,7 @@
 	},
 	"dependencies": {
 		"dotenv": "^16.4.7",
-		"mongoose": "^8.9.2"
+		"mongoose": "^8.9.2",
+		"node-schedule": "^2.1.1"
 	}
 }

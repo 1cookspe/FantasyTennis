@@ -13,6 +13,9 @@
             Once the tournament concludes, the team with the highest total
             points wins!
         </li>
+        <li>
+            Scores are updated every 24 hours, so check back often to see how you're doing!
+        </li>
     </ul>
 
     <!-- Table for point scoring -->
